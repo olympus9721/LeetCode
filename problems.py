@@ -83,4 +83,73 @@ class Solution:
                 s += ch
         return s
 
+# 88. Merge Sorted Array
+class Solution:
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        """
+        Do not return anything, modify nums1 in-place instead.
+        """
+        if m == 0 and n != 0:
+            for i in range(n):
+                nums1[i] = nums2[i]
+            return nums1
+        if n == 0:
+            return nums1
+        for i in range(len(nums2)):
+            nums1[m+i] = nums2[i]
+        return nums1.sort()
+
+# 485. Max Consecutive Ones
+class Solution:
+    def findMaxConsecutiveOnes(self, nums: List[int]) -> int:
+        l = []
+        cnt = 0
+        for i in nums:
+            if i == 1:
+                cnt+= 1
+            else:
+                l.append(cnt)
+                cnt = 0
+        l.append(cnt)
+        return max(l)
+
+# 977. Squares of a Sorted Array
+class Solution:
+    def sortedSquares(self, nums: List[int]) -> List[int]:
+        l = []
+        for i in nums:
+            l.append(i*i)
+        return sorted(l)
+
+# 1089. Duplicate Zeros
+class Solution:
+    def duplicateZeros(self, arr: List[int]) -> None:
+        """
+        Do not return anything, modify arr in-place instead.
+        """
+        n = len(arr)
+        l = []
+        zeros = 0
+        for i in arr:
+            if i == 0:
+                zeros += 1
+        i = n - 1
+        while zeros > 0:
+            if i + zeros < n:
+                arr[i + zeros] = arr[i]
+            if arr[i] == 0:
+                zeros -= 1
+                if i + zeros < n:
+                    arr[i + zeros] = 0
+            i -= 1
+
+# 1295. Find Numbers with Even Number of Digits
+class Solution:
+    def findNumbers(self, nums: List[int]) -> int:
+        l = 0
+        for i in nums:
+            if len(str(i)) % 2 == 0:
+                l +=1
+        return l
+
 
