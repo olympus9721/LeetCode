@@ -176,5 +176,27 @@ class Solution:
         return len(nums)
 
 # 1550. Three Consecutive Odds
+class Solution:
+    def threeConsecutiveOdds(self, arr: List[int]) -> bool:
+        for i in range(len(arr) - 2):
+            if arr[i] % 2 != 0 and arr[i+1] % 2 != 0 and arr[i+2] % 2 != 0:
+                return True
+        return False
 
-
+# 350. Intersection of Two Arrays II
+class Solution:
+    def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        nums1.sort()
+        nums2.sort()
+        l = []
+        i, j = 0, 0
+        while i < len(nums1) and j < len(nums2):
+            if nums1[i] < nums2[j]:
+                i += 1
+            elif nums1[i] > nums2[j]:
+                j += 1
+            else:
+                l.append(nums1[i])
+                i += 1
+                j += 1
+        return l
