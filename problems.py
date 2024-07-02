@@ -175,3 +175,6 @@ class Solution:
                 i += 1
         return len(nums)
 
+# 1550. Three Consecutive Odds
+
+
